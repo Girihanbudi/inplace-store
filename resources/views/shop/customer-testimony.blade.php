@@ -23,7 +23,7 @@
 				<div class="block-18 text-center">
 					<div class="text">
 					<strong style="font-size:40px" class="number" data-number="51"> {{__('0')}} </strong>
-					<span style="font-size:15px"> <b>{{_('Partner')}}</b> </span>
+					<span style="font-size:15px"> <b>{{__('Partner')}}</b> </span>
 					</div>
 				</div>
 				</div>
