@@ -11,6 +11,7 @@ class ProductController extends Controller
     {
         // retrive data from database
         $products = DB::table('products')
+                        ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
                         ->paginate(15);
 
 

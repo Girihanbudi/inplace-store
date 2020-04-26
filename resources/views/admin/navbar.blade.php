@@ -1,5 +1,5 @@
 @php
-    $long_name = Auth::User()['name'];
+    $long_name = Auth::User()->name;
     $first_name = explode(' ',trim($long_name));
 @endphp
 
@@ -165,7 +165,7 @@
                     </div>
                     <div class="p-2 border-top">
                         <a class="btn btn-sm btn-link font-size-14 btn-block text-center" href="javascript:void(0)">
-                            <i class="mdi mdi-arrow-right-circle mr-1"></i> View More..
+                            <i class="mdi mdi-arrow-right-circle mr-1"></i> {{__('View More..')}}
                         </a>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
+                    <a class="dropdown-item" href="/admin/profile"><i class="bx bx-user font-size-16 align-middle mr-1"></i> {{__('Profile')}} </a>
                     {{-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
                     <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                     <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a> --}}
@@ -198,7 +198,6 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-
                     
                 </div>
             </div>          

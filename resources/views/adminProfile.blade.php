@@ -8,11 +8,6 @@
 
         <div class="page-content">
             <div class="container-fluid">
-            @php
-                $long_name = Auth::User()->name;
-                $first_name = explode(' ',trim($long_name));
-            @endphp
-
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -31,29 +26,62 @@
             </div>
             <!-- end page title -->
 
-        <div class="card overflow-hidden">
-            <div class="bg-soft-primary">
-                <div class="row">
-                    <div class="col-7">
-                        <div class="text-primary p-3">
-                            <h5 class="text-primary"> {{__('Manage')}} </h5>
-                            <p> {{__('Your Profile')}} </p>
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <img style="  display: block;
+                    margin-left: auto;
+                    margin-right: auto;"
+                    src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg" alt="" class="img-thumbnail rounded-circle">
+                    <br>
+                    <hr>
+                    <br>
+                    <h2 style="text-align:center" class=" text-truncate"> {{Auth::User()->name}} </h2>
+                    <p style="font-size:16px; text-align:center" class="text-muted mb-0 text-truncate"> {{__('Administrator')}} </p>
+                    <p style="font-size:12px; text-align:center" class="text-muted mb-0 text-truncate"> {{'Last Update : ' . Auth::User()->updated_at}} </p>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="card overflow-hidden">
+                
+                <div class="card-body pt-12">
+                    <div class="row">                       
+            
+                        <div class="col-sm-4">
+                            <div class="pt-4">
+            
+                                <dl class="row mb-0">
+                                    <dt class="col-sm-3">ID</dt>
+                                    <dd class="col-sm-9">{{Auth::User()->id}}</dd>
+
+                                    <dt class="col-sm-3">Name</dt>
+                                    <dd class="col-sm-9">{{Auth::User()->name}}</dd>
+                    
+                                    <dt class="col-sm-3">Email</dt>
+                                    <dd class="col-sm-9">{{Auth::User()->email}}</dd>
+                    
+                                    <dt class="col-sm-3">Gender</dt>
+                                    @if (Auth::User()->is_male)
+                                        <dd class="col-sm-9">Male</dd>    
+                                    @else 
+                                        <dd class="col-sm-9">Female</dd>                               
+                                    @endif
+                    
+                                    <dt class="col-sm-3 text-truncate">Address</dt>
+                                    <dd class="col-sm-9">{{Auth::User()->address}}</dd>
+                                </dl>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-            <div class="card-body pt-0">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="avatar-md profile-user-wid mb-12">
-                            <img src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg" alt="" class="img-thumbnail rounded-circle">
-                        </div>
-                        
-                        <h5 class="font-size-15 text-truncate"> {{$first_name[0]}} </h5>
-                        <p class="text-muted mb-0 text-truncate"> {{__('Administrator')}} </p>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
     </div>
 @endsection

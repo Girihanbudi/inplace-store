@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 300);
             $table->integer('price');
+            $table->integer('rating')->nullable();
             $table->float('weight');
             $table->string('describe', 500)->nullable();
             $table->timestamps();

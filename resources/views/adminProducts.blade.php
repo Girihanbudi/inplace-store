@@ -131,7 +131,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            @for ($i = 0; $i < 5; $i++)
+                            @foreach($products as $product)
+                            
                                 <div class="col-xl-4 col-sm-6">
                                     <div class="card">
                                         <div class="card-body">
@@ -144,49 +145,39 @@
                                                 <img src="/adminresource/assets/images/product/img-1.png" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                             <div class="mt-4 text-center">
-                                                <h5 class="mb-3 text-truncate"><a href="#" class="text-dark">Half sleeve T-shirt </a></h5>
-                                                
+                                                <h5 class="mb-3 text-truncate"><a href="#" class="text-dark"> {{$product->name . ' - '. $product->color . ' ('.$product->size.')'}} </a></h5>
+                                                @php
+                                                    $count = $product->rating / 100 * 5 //5 STAR
+                                                    // if ($count > 5) $count = 5
+                                                @endphp                          
+
                                                 <p class="text-muted">
-                                                    <i class="bx bx-star text-warning"></i>
-                                                    <i class="bx bx-star text-warning"></i>
-                                                    <i class="bx bx-star text-warning"></i>
-                                                    <i class="bx bx-star text-warning"></i>
-                                                    <i class="bx bx-star text-warning"></i>
+                                                    @for ($i=0; $i < 5; $i++)
+                                                        @if ($i < $count)
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                        @else
+                                                            <i class="bx bx-star text-warning"></i>
+                                                        @endif
+
+                                                    @endfor
+                                                <span>{{' ' . $product->quantity . ' left' }}</span>
+
                                                 </p>
-                                                <h5 class="my-0"><span class="text-muted mr-2"><del>$500</del></span> <b>$450</b></h5>
+                                            <h5 class="my-0"><span class="text-muted mr-2"><del> {{'Rp '. $product->price}} </del></span> <b> {{'Rp '. ($product->price - $product->price * 0.25)}} </b></h5>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
+                           
+                            @endforeach
                         </div>
                         <!-- end row -->
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <ul class="pagination pagination-rounded justify-content-center mt-4">
-                                    <li class="page-item disabled">
-                                        <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">1</a>
-                                    </li>
-                                    <li class="page-item active">
-                                        <a href="#" class="page-link">2</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">3</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">4</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">5</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                                    </li>
+                                <ul class="pagination pagination-rounded justify-content-end mb-2">
+                                    {{ $products->links() }}
                                 </ul>
                             </div>
                         </div>
