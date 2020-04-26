@@ -42,7 +42,7 @@
         {{-- @include('admin/layouts/right-sidebar') --}}
 
         <!-- Scripts -->
-        <script src="adminresource/assets/js/app.js" defer></script>
+        <script src="/adminresource/assets/js/app.js" defer></script>
 
         <!-- JAVASCRIPT -->        
         <script src="/adminresource/assets/libs/jquery/jquery.min.js"></script>
