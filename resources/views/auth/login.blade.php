@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="{{ asset('adminresource/assets/images/profile-img.png')}}" alt="" class="img-fluid">
+                                    <img src="/adminresource/assets/images/profile-img.png" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                                 <a href="index.html">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset('adminresource/assets/images/logo.svg')}}" alt="" height="34">
+                                            <img src="/adminresource/assets/images/logo.svg" alt="" height="34">
                                         </span>
                                     </div>
                                 </a>

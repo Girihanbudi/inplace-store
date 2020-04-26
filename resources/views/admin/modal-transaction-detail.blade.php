@@ -25,7 +25,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div>
-                                            <img src="{{ asset('adminresource/assets/images/product/img-7.png')}}" alt="" class="avatar-sm">
+                                            <img src="/adminresource/assets/images/product/img-7.png" alt="" class="avatar-sm">
                                         </div>
                                     </th>
                                     <td>
@@ -39,7 +39,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div>
-                                            <img src="{{ asset('adminresource/assets/images/product/img-4.png')}}" alt="" class="avatar-sm">
+                                            <img src="/adminresource/assets/images/product/img-4.png" alt="" class="avatar-sm">
                                         </div>
                                     </th>
                                     <td>

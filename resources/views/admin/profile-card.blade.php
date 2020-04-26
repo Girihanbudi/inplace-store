@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-5 align-self-end">
-                <img src="{{ asset('adminresource/assets/images/profile-img.png')}}" alt="" class="img-fluid">
+                <img src="/adminresource/assets/images/profile-img.png" alt="" class="img-fluid">
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="avatar-md profile-user-wid mb-4">
-                    <img src="{{ asset('adminresource/assets/images/users/'. Auth::User()->id .'.jpg')}}" alt="" class="img-thumbnail rounded-circle">
+                    <img src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg" alt="" class="img-thumbnail rounded-circle">
                 </div>
                 
                 <h5 class="font-size-15 text-truncate"> {{$first_name[0]}} </h5>

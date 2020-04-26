@@ -141,7 +141,7 @@
                                                         - 25 %
                                                     </span>
                                                 </div>
-                                                <img src="{{ asset('adminresource/assets/images/product/img-1.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                <img src="/adminresource/assets/images/product/img-1.png" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                             <div class="mt-4 text-center">
                                                 <h5 class="mb-3 text-truncate"><a href="#" class="text-dark">Half sleeve T-shirt </a></h5>

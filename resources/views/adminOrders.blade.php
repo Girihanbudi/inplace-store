@@ -155,7 +155,7 @@
                                     <tr>
                                         <th scope="row">
                                             <div>
-                                                <img src="{{ asset('admin/assets/images/product/img-4.png')}}" alt="" class="avatar-sm">
+                                                <img src="/admin/assets/images/product/img-4.png" alt="" class="avatar-sm">
                                             </div>
                                         </th>
                                         <td>

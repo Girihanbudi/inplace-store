@@ -55,12 +55,12 @@
                         <span> {{__('Reports')}} </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="layouts-horizontal.html"> {{__('Transactions')}} </a></li>
-                        <li><a href="layouts-horizontal.html"> {{__('Item Sales')}} </a></li>
-                        <li><a href="layouts-horizontal.html"> {{__('Item Ranks')}} </a></li>
-                        <li><a href="layouts-horizontal.html"> {{__('Trafics')}} </a></li>
-                        <li><a href="layouts-horizontal.html"> {{__('Provits')}} </a></li>
-                        <li><a href="layouts-horizontal.html"> {{__('Socials')}} </a></li>
+                        <li><a href="#"> {{__('Transactions')}} </a></li>
+                        <li><a href="#"> {{__('Item Sales')}} </a></li>
+                        <li><a href="#"> {{__('Item Ranks')}} </a></li>
+                        <li><a href="#"> {{__('Trafics')}} </a></li>
+                        <li><a href="#"> {{__('Provits')}} </a></li>
+                        <li><a href="#"> {{__('Socials')}} </a></li>
                     </ul>
                 </li>
             </ul>

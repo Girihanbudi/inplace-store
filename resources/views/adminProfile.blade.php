@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="avatar-md profile-user-wid mb-12">
-                            <img src="{{ asset('adminresource/assets/images/users/'. Auth::User()->id .'.jpg')}}" alt="" class="img-thumbnail rounded-circle">
+                            <img src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg" alt="" class="img-thumbnail rounded-circle">
                         </div>
                         
                         <h5 class="font-size-15 text-truncate"> {{$first_name[0]}} </h5>

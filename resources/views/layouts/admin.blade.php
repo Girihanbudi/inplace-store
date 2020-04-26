@@ -10,13 +10,13 @@
         <title>{{ config('app.name', 'Inplace') }} | Admin Dashboard </title>
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('favicon.ico')}}">
+        <link rel="shortcut icon" href="/favicon.ico">
         <!-- Bootstrap Css -->
-        <link href="{{ asset('adminresource/assets/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="/adminresource/assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="{{ asset('adminresource/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="/adminresource/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="{{ asset('adminresource/assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="/adminresource/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -42,18 +42,18 @@
         {{-- @include('admin/layouts/right-sidebar') --}}
 
         <!-- Scripts -->
-        <script src="{{ asset('adminresource/assets/js/app.js') }}" defer></script>
+        <script src="adminresource/assets/js/app.js" defer></script>
 
         <!-- JAVASCRIPT -->        
-        <script src="{{ asset('adminresource/assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{ asset('adminresource/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{ asset('adminresource/assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{ asset('adminresource/assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{ asset('adminresource/assets/libs/node-waves/waves.min.js')}}"></script>
+        <script src="/adminresource/assets/libs/jquery/jquery.min.js"></script>
+        <script src="/adminresource/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/adminresource/assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/adminresource/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/adminresource/assets/libs/node-waves/waves.min.js"></script>
 
         <!-- apexcharts -->
-        <script src="{{ asset('adminresource/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
-        <script src="{{ asset('adminresource/assets/js/pages/dashboard.init.js')}}"></script>
+        <script src="/adminresource/assets/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="/adminresource/assets/js/pages/dashboard.init.js"></script>
    
     </body>
     

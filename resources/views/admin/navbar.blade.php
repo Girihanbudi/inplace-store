@@ -10,19 +10,19 @@
             <div class="navbar-brand-box">
                 <a href="/admin/home" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('adminresource/assets/images/logo.svg')}}" alt="" height="22">
+                        <img src="/adminresource/assets/images/logo.svg" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('adminresource/assets/images/logo-dark.png')}}" alt="" height="17">
+                        <img src="/adminresource/assets/images/logo-dark.png" alt="" height="17">
                     </span>
                 </a>
 
                 <a href="/admin/home" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('adminresource/assets/images/logo-light.svg')}}" alt="" height="22">
+                        <img src="/adminresource/assets/images/logo-light.svg" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('adminresource/assets/images/logo-light.png')}}" alt="" height="19">
+                        <img src="/adminresource/assets/images/logo-light.png" alt="" height="19">
                     </span>
                 </a>
             </div>
@@ -65,7 +65,7 @@
                                 
                                 <div class="col-sm-5">
                                     <div>
-                                        <img src="{{ asset('adminresource/assets/images/megamenu-img.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                        <img src="/adminresource/assets/images/megamenu-img.png" alt="" class="img-fluid mx-auto d-block">
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                         </a>
                         <a href="#" class="text-reset notification-item">
                             <div class="media">
-                                <img src="{{ asset('adminresource/assets/images/users/'. Auth::User()->id .'.jpg')}}"
+                                <img src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg"
                                     class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                 <div class="media-body">
                                     <h6 class="mt-0 mb-1">James Lemire</h6>
@@ -151,7 +151,7 @@
 
                         <a href="#" class="text-reset notification-item">
                             <div class="media">
-                                <img src="{{ asset('adminresource/assets/images/users/'. Auth::User()->id .'jpg')}}"
+                                <img src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg'"
                                     class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                 <div class="media-body">
                                     <h6 class="mt-0 mb-1">Salena Layfield</h6>
@@ -174,7 +174,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ asset('adminresource/assets/images/users/'.Auth::User()->id.'.jpg')}}"
+                    <img class="rounded-circle header-profile-user" src="/adminresource/assets/images/users/{{Auth::User()->id}}.jpg"
                         alt="Header Avatar">
             <span class="d-none d-xl-inline-block ml-1"> {{$first_name[0]}} </span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>

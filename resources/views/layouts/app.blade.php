@@ -14,16 +14,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}">
+    <link rel="shortcut icon" href="/favicon.ico">
     <!-- Bootstrap Css -->
-    <link href="{{ asset('adminresource/assets/css/bootstrap-light.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="/adminresource/assets/css/bootstrap-light.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('adminresource/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="/adminresource/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('adminresource/assets/css/app-light.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="/adminresource/assets/css/app-light.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body >
@@ -85,7 +85,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="/js/app.js" defer></script>
     
 </body>
 </html>
