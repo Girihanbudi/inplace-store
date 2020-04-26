@@ -1,5 +1,5 @@
 @php
-    $long_name = Auth::User(0)['name'];
+    $long_name = Auth::User(0)->name;
     $first_name = explode(' ',trim($long_name));
 @endphp
 
