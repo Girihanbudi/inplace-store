@@ -8,7 +8,7 @@
 				<div class="text py-3 py-md-5">
 			<h2 class="mb-4">New Women's Clothing Summer Collection 2019</h2>
 			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-			<p><a href="#" class="btn btn-white px-4 py-3">Shop now</a></p>
+			<p><a href="/shop" class="btn btn-white px-4 py-3">Shop now</a></p>
 				</div>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 				<div class="text text-2 py-md-5">
 			<h2 class="mb-4">New Men's Clothing Summer Collection 2019</h2>
 			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-			<p><a href="#" class="btn btn-white px-4 py-3">Shop now</a></p>
+			<p><a href="/shop" class="btn btn-white px-4 py-3">Shop now</a></p>
 				</div>
 			</div>
 		</div>

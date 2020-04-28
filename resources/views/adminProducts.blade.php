@@ -138,13 +138,19 @@
                                         <div class="card-body">
                                             <div class="product-img position-relative">
                                                 <div class="avatar-sm product-ribbon">
-                                                    <span class="avatar-title rounded-circle  bg-primary">
+                                                    <span class="avatar-title rounded-circle bg-primary">
                                                         - 25 %
                                                     </span>
                                                 </div>
-                                                <img src="/adminresource/assets/images/product/img-1.png" alt="" class="img-fluid mx-auto d-block">
+                                                <img src="/shopresource/winkel/images/product-8.jpg" alt="" class="img-fluid mx-auto d-block">
                                             </div>
+
                                             <div class="mt-4 text-center">
+                                                <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-primary btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#delete" data-placement="top" title="" data-original-title="Delete" class="btn btn-danger btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-close font-size-18"></i></a>
+                                            </div>  
+
+                                            <div class="mt-2 text-center">
                                                 <h5 class="mb-3 text-truncate"><a href="#" class="text-dark"> {{$product->name . ' - '. $product->color . ' ('.$product->size.')'}} </a></h5>
                                                 @php
                                                     $count = $product->rating / 100 * 5 //5 STAR
@@ -163,8 +169,7 @@
                                                 <span>{{' ' . $product->quantity . ' left' }}</span>
 
                                                 </p>
-                                            <h5 class="my-0"><span class="text-muted mr-2"><del> {{'Rp '. $product->price}} </del></span> <b> {{'Rp '. ($product->price - $product->price * 0.25)}} </b></h5>
-
+                                            <h5 class="my-0"><span class="text-muted mr-2"><del> {{'Rp '. $product->price}} </del></span> <b> {{'Rp '. ($product->price - $product->price * 0.25)}} </b></h5>                                          
                                             </div>
                                         </div>
                                     </div>
@@ -187,24 +192,40 @@
 
             </div> <!-- container-fluid -->
         </div>
-        <!-- End Page-content -->
-
+    </div>
+    <!-- End Page-content -->
         
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Skote.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-right d-none d-sm-block">
-                            Design & Develop by Themesbrand
-                        </div>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to remove this product?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
-    <!-- end main content-->
 
+    <script>
+        $(document).on("click", "#delete", function () {
+            var name= $(this).data('name');
+            document.getElementById("deleteTxtName").innerHTML = name;
+        });
+
+        $(document).on("click", "#btnEdit", function () {
+            var name= $(this).data('name');
+            document.getElementById("editTxtName").innerHTML = name;
+        });
+    </script>
 @endsection

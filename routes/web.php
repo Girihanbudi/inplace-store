@@ -13,17 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'ProductController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/shop', function(){
-    return view('shop');
-});
+Route::get('/shop', 'ProductController@shopProducts');
 
 Route::get('/contact', function(){
     return view('contact');
@@ -45,9 +41,7 @@ Route::get('/admin/profile', function(){
 Route::get('/admin/orders', 'TransactionController@getTransaction');
 
 Route::get('/admin/products', 'ProductController@getProducts');
-Route::get('/admin/product/add', function(){
-    return view('adminProductAdd');
-});
+Route::get('/admin/product/add', 'ProductController@getCategoryAndType');
 
 Route::get('/admin/users', 'UserController@getUsers');
 Route::get('/admin/user/add', function(){

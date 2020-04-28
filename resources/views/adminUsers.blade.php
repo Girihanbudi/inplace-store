@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="text-sm-right">
-                                        <a href="/admin/user/add" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i> {{__('New Customers')}} </a>                    
+                                        <a href="/admin/user/add" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i> {{__('New User')}} </a>                    
                                     </div>
                                 </div><!-- end col-->
                             </div>

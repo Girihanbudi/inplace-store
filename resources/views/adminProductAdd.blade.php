@@ -50,43 +50,38 @@
                                                 <label for="productweight"> {{__('Weight')}} </label>
                                                 <input id="productweight" name="productweight" type="text" class="form-control">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="productdescription"> {{__('Product Description')}} </label>
+                                                <textarea class="form-control" id="productdescription" rows="5"></textarea>
+                                            </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label class="control-label"> {{__('Category')}} </label>
-                                                <div style="padding-top: 1.5px; padding-bottom: 1.5px" class=" custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="test">
-                                                    <label class="custom-control-label" for="test">&nbsp;</label>
-                                                    sdfsdf
-                                                </div>
-                                                <div style="padding-top: 1.5px; padding-bottom: 1.5px" class="form-group custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="test2">
-                                                    <label class="custom-control-label" for="test2">&nbsp;</label>
-                                                    sdfsdf
-                                                </div>
-                                                <select class="form-control select2">
+                                                <label class="control-label"> {{__('Types')}} </label>
+                                                @foreach ($types as $type)
+                                                    <div style="padding-top: 1.5px; padding-bottom: 1.5px" class=" custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="{{$type->id}}">
+                                                        <label class="custom-control-label" for="{{$type->id}}">&nbsp;</label>
+                                                        {{$type->name}}
+                                                    </div>
+                                                @endforeach
+
+                                                {{-- <select class="form-control select2">
                                                     <option> {{__('Select')}} </option>
                                                     <option value="AK">Alaska</option>
                                                     <option value="HI">Hawaii</option>
-                                                </select>
+                                                </select> --}}
+
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Features</label>
+                                                <label class="control-label"> {{__('Category')}} </label>
 
                                                 <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="HI">Hawaii</option>
-                                                    <option value="CA">California</option>
-                                                    <option value="NV">Nevada</option>
-                                                    <option value="OR">Oregon</option>
-                                                    <option value="WA">Washington</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{$category->id}}"> {{$category->name}} </option>
+                                                    @endforeach
                                                 </select>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="productdescription"> {{__('Product Description')}} </label>
-                                                <textarea class="form-control" id="productdescription" rows="5"></textarea>
                                             </div>
                                             
                                         </div>

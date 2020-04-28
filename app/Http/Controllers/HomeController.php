@@ -25,7 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $best_sellers = DB::table('products')
+                        ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
+                        ->orderByDesc('rating')
+                        ->take(5)
+                        ->get();
+
+        $products = DB::table('products')
+                    ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
+                    ->take(5)
+                    ->get();
+
+        return view('home', ["best_sellers" => $best_sellers, "products" => $products]);
     }
 
     /**
