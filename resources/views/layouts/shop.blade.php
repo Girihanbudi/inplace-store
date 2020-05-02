@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="favicon.ico">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/shopresource/winkel/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/shopresource/winkel/css/animate.css">
     
@@ -59,6 +59,43 @@
     <script src="/shopresource/winkel/js/scrollax.min.js"></script>
     <script src="/shopresource/winkel/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="/shopresource/winkel/js/google-map.js"></script>
+    
+    <script>
+      $(document).ready(function(){
+    
+      var quantitiy=0;
+         $('.quantity-right-plus').click(function(e){
+          
+          // Stop acting like a button
+          e.preventDefault();
+          // Get the field name
+          var quantity = parseInt($('#quantity').val());
+          
+          // If is not undefined
+            
+            $('#quantity').val(quantity + 1);
+    
+            
+            // Increment
+          
+        });
+    
+         $('.quantity-left-minus').click(function(e){
+          // Stop acting like a button
+          e.preventDefault();
+          // Get the field name
+          var quantity = parseInt($('#quantity').val());
+          
+          // If is not undefined
+          
+            // Increment
+            if(quantity>0){
+            $('#quantity').val(quantity - 1);
+            }
+        });		
+      });
+    </script>
+    
     <script src="/shopresource/winkel/js/main.js"></script>
     
   </body>

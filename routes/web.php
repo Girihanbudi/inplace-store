@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/shop', 'ProductController@shopProducts');
+Route::get('/shop/type?={name}', 'ProductController@productByType');
+Route::get('/shop/category?={name}', 'ProductController@productByCategory');
+
+Route::get('/product/{id}', 'ProductController@showProduct');
 
 Route::get('/contact', function(){
     return view('contact');
@@ -32,6 +37,10 @@ Route::get('/blog', function(){
 Route::get('/blog/id', function(){
     return view('blogSingle');
 });
+
+Route::post('/cart/addproduct', 'CartController@addToCart');
+Route::get('/cart', 'CartController@showCart');
+Route::get('/cart/discard/cartID={cart_id}&quantity={quantity}&infoID={info_id}', 'CartController@discard');
 
 Route::get('/admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 Route::get('/admin/profile', function(){
@@ -47,3 +56,4 @@ Route::get('/admin/users', 'UserController@getUsers');
 Route::get('/admin/user/add', function(){
     return view('adminUserAdd');
 });
+

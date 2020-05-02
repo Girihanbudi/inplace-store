@@ -10,14 +10,14 @@
 						  					  
 					  <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
 						  <div class="product">
-							  <a href="#" class="img-prod"><img class="img-fluid" src="/shopresource/winkel/images/product-8.jpg" alt="Colorlib Template">
+							  <a href="/product/{{$product->id}}" class="img-prod"><img class="img-fluid" src="/shopresource/winkel/images/product-8.jpg" alt="Colorlib Template">
 								  <div class="overlay"></div>
 							  </a>
 							  <div class="text py-3 px-3">
 								  <h3><a href="#"> {{$product->name . ' - '. $product->color . ' ('.$product->size.')'}} </a></h3>
 								  <div class="d-flex">
 									  <div class="pricing">
-										  <p class="price"><span> {{$product->price}} </span></p>
+										  <p class="price"><span> <?php echo number_format($product->price)?> </span></p>
 									  </div>
 									  <div class="rating">
 										  <p class="text-right">
@@ -58,50 +58,51 @@
 
 			  <div class="col-md-4 col-lg-2 sidebar">
 				  <div class="sidebar-box-2">
-					  <h2 class="heading mb-4"><a href="#">Clothing</a></h2>
+					  <h2 class="heading mb-4"><a href="#">Categories</a></h2>
 					  <ul>
-						  <li><a href="#">Shirts &amp; Tops</a></li>
-							  <li><a href="#">Dresses</a></li>
-							  <li><a href="#">Shorts &amp; Skirts</a></li>
-							  <li><a href="#">Jackets</a></li>
-							  <li><a href="#">Coats</a></li>
-							  <li><a href="#">Sleeveless</a></li>
-							  <li><a href="#">Trousers</a></li>
-							  <li><a href="#">Winter Coats</a></li>
-							  <li><a href="#">Jumpsuits</a></li>
+						  @foreach ($product_categories as $category)
+							  <li><a href="/shop"> {{$category->name}} </a></li>
+						  @endforeach
 					  </ul>
 				  </div>
+
 				  <div class="sidebar-box-2">
-					  <h2 class="heading mb-4"><a href="#">Jeans</a></h2>
-					  <ul>
-						  <li><a href="#">Shirts &amp; Tops</a></li>
-							  <li><a href="#">Dresses</a></li>
-							  <li><a href="#">Shorts &amp; Skirts</a></li>
-							  <li><a href="#">Jackets</a></li>
-							  <li><a href="#">Coats</a></li>
-							  <li><a href="#">Jeans</a></li>
-							  <li><a href="#">Sleeveless</a></li>
-							  <li><a href="#">Trousers</a></li>
-							  <li><a href="#">Winter Coats</a></li>
-							  <li><a href="#">Jumpsuits</a></li>
-					  </ul>
-				  </div>
-				  <div class="sidebar-box-2">
-					  <h2 class="heading mb-2"><a href="#">Bags</a></h2>
-					  <h2 class="heading mb-2"><a href="#">Accessories</a></h2>
-				  </div>
-					  <div class="sidebar-box-2">
-					  <h2 class="heading mb-4"><a href="#">Shoes</a></h2>
-					  <ul>
-						  <li><a href="#">Nike</a></li>
-							  <li><a href="#">Addidas</a></li>
-							  <li><a href="#">Skechers</a></li>
-							  <li><a href="#">Jackets</a></li>
-							  <li><a href="#">Coats</a></li>
-							  <li><a href="#">Jeans</a></li>
-					  </ul>
-				  </div>
+					<h2 class="heading mb-4"><a href="#">Types</a></h2>
+					<ul>
+						@foreach ($product_types as $type)
+							<li><a href="/shop">{{$type->name}} </a></li>
+						@endforeach
+					</ul>
+				</div>
 			  </div>
+
+			  {{-- <div class="col-md-4 col-lg-2 sidebar">
+				<div class="sidebar-box-2">
+					<h2 class="heading mb-4"><a href="#">Categories</a></h2>
+					<ul>
+					  @foreach ($product_categories as $category)
+						<form action="/shop/category?={{$category->name}}" method="get">
+							  {{ csrf_field() }}
+								<button name="{{$category->name}}" type="submit" value="{{$category->name}}">{{$category->name}}</button>
+						</form>
+					  @endforeach
+					</ul>
+				</div>
+
+				<div class="sidebar-box-2">
+				  <h2 class="heading mb-4"><a href="#">Types</a></h2>
+				  <ul>
+					  @foreach ($product_types as $type)
+						<form action="/shop/category?={{$type->name}}" method="get">
+							  {{ csrf_field() }}
+								<button name="{{$type->name}}" type="submit" value="{{$type->name}}">{{$category->name}}</button>
+						</form>
+					  @endforeach
+				  </ul>
+			   </div>
+			</div> --}}
+
+
 		  </div>
 	  </div>
   </section>
