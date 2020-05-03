@@ -49,6 +49,19 @@ class CartController extends Controller
         return redirect('/shop');
     }
 
+    public function hide($carts_id){
+
+        return $carts_id;
+
+        foreach ($carts_id as $id){
+            DB::table('carts')
+            ->where('id', '=', $id)
+            ->update(['status'=> 'hidden']);
+        }
+
+        return view('/payment');
+    }
+
     public function discard($cart_id, $quantity, $info_id){
 
         $selected_infos = DB::table('product_infos')

@@ -146,8 +146,9 @@
                                             </div>
 
                                             <div class="mt-4 text-center">
-                                                <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-primary btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#delete" data-placement="top" title="" data-original-title="Delete" class="btn btn-danger btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-close font-size-18"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#add-{{$product->info_id}}" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus font-size-18"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#edit-{{$product->info_id}}" class="btn btn-primary btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#delete-{{$product->info_id}}" class="btn btn-danger btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-close font-size-18"></i></a>
                                             </div>  
 
                                             <div class="mt-2 text-center">
@@ -169,7 +170,156 @@
                                                 <span>{{' ' . $product->quantity . ' left' }}</span>
 
                                                 </p>
-                                            <h5 class="my-0"><span class="text-muted mr-2"><del> {{'Rp '. $product->price}} </del></span> <b> {{'Rp '. ($product->price - $product->price * 0.25)}} </b></h5>                                          
+                                            <h5 class="my-0"><span class="text-muted mr-2"><del> Rp <?php echo number_format($product->price) ?></del></span> <b> Rp <?php echo number_format(($product->price - $product->price * 0.25))?> </b></h5>                                          
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Add -->
+                                <div class="modal fade" id="add-{{$product->info_id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteTitle">Add</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group row">
+                                                    <label for="example-text-input" class="col-md-4 col-form-label">Add Item</label>
+                                                    <div class="col-md-8">
+                                                            <input data-parsley-type="digits" type="text"
+                                                                    class="form-control" required
+                                                                    placeholder="Enter only digits"/>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                            <form action="/admin/product/add={{$product->info_id}}">
+                                                    <button type="submit" class="btn btn-success"> Add </button>
+                                                </form>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Delete -->
+                                <div class="modal fade" id="delete-{{$product->info_id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteTitle">Delete Product</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure want to remove this product?
+                                            </div>
+                                            <div class="modal-footer">
+                                            <form action="/admin/product/remove={{$product->info_id}}">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Edit -->
+                            <div class="modal fade" id="edit-{{$product->info_id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteTitle">Edit Product</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="form-group row">
+                                                    <label for="example-text-input" class="col-md-2 col-form-label">Item Image</label>
+                                                    <div class="col-md-10">
+                                                        <div class="fallback">
+                                                            <input name="file" type="file" multiple="multiple">
+                                                        </div>
+                                                        <div class="dz-message needsclick">
+                                                            <div class="mb-3">
+                                                                <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                            </div>
+                                                        </div>
+        
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row">
+                                                    <label for="example-text-input" class="col-md-2 col-form-label">Item Name</label>
+                                                    <div class="col-md-10">
+                                                        <input class="form-control" type="text" value="{{$product->name}}" id="example-text-input">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="example-text-input" class="col-md-2 col-form-label">Color</label>
+                                                    <div class="col-md-10">
+                                                        <input class="form-control" type="text" value="{{$product->color}}" id="example-text-input">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="example-email-input" class="col-md-2 col-form-label">size</label>
+                                                    <div class="col-md-10">
+                                                        <input class="form-control" type="email" value="{{$product->size}}" id="example-email-input">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="example-url-input" class="col-md-2 col-form-label">Price</label>
+                                                    <div class="col-md-10">
+                                                        <input class="form-control" type="url" value="{{$product->price}}" id="example-url-input">
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="form-group row">
+                                                    <label class="col-md-2 col-form-label">Category</label>
+                                                    <div class="col-md-10">
+                                                        <select class="form-control select2">   
+                                                            
+                                                            @foreach ($product_categories as $category)
+                                                                <option value="{{$category->name}}"> {{$category->name}} </option>  
+                                                            @endforeach                                                        
+                                                                 
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-2 col-form-label">Types</label>
+                                                    <div class="col-md-10">
+
+                                                        @foreach ($product_types as $type)
+                                                            <div class=" custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="{{$type->id}}">
+                                                                <label class="custom-control-label" for="{{$type->name}}">&nbsp;</label>
+                                                                {{$type->name}}
+                                                            </div>
+                                                        @endforeach                                                  
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                            <form action="/admin/product/edit={{$product->info_id}}">
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                                </form>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -194,38 +344,4 @@
         </div>
     </div>
     <!-- End Page-content -->
-        
-    <!-- Modal -->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure want to remove this product?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $(document).on("click", "#delete", function () {
-            var name= $(this).data('name');
-            document.getElementById("deleteTxtName").innerHTML = name;
-        });
-
-        $(document).on("click", "#btnEdit", function () {
-            var name= $(this).data('name');
-            document.getElementById("editTxtName").innerHTML = name;
-        });
-    </script>
 @endsection

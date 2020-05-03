@@ -11,12 +11,16 @@ class ProductController extends Controller
     {
         // retrive data from database
         $products = DB::table('products')
+                        ->select('products.id', 'product_infos.id as info_id', 'products.name', 'products.price', 'products.weight', 'products.rating', 'products.describe', 'product_infos.color', 'product_infos.size', 'product_infos.quantity')
                         ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
                         ->paginate(5);
 
+        $product_types = DB::table('product_types')->get();
+        $product_categories = DB::table('product_categories')->get();
 
         // send data to admin Home
-        return view('adminProducts', ['products' => $products]);
+        // return $products;
+        return view('adminProducts', ['products' => $products, 'product_categories' => $product_categories, 'product_types' => $product_types]);
     }
 
     public function showProduct($id)
@@ -81,12 +85,16 @@ class ProductController extends Controller
         ->take(5)
         ->get();
 
-$products = DB::table('products')
-    ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
-    ->take(5)
-    ->get();
+        $products = DB::table('products')
+            ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
+            ->take(5)
+            ->get();
 
-return view('home', ["best_sellers" => $best_sellers, "products" => $products]);
+        return view('home', ["best_sellers" => $best_sellers, "products" => $products]);
+    }
+
+    public function delete(){
+
     }
 
 }

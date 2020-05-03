@@ -17,9 +17,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $total = 0;?>
+                        <?php 
+                            $total = 0;
+                            $carts_id = [];
+                        ?>
+
                         @foreach ($cart_items as $item)                           
                             <tr class="text-center">
+                                <?php array_push($carts_id, $item->id) ?>
                                 <td class="product-remove"><a href="/cart/discard/cartID={{$item->id}}&quantity={{$item->quantity}}&infoID={{$item->info_id}}"><span class="ion-ios-close"></span></a></td>
                                 
                                 <td class="image-prod"><div class="img" style="background-image:url(/shopresource/winkel/images/product-8.jpg);"></div></td>
@@ -70,7 +75,7 @@
                     <span> Rp <?php echo number_format($cost + $total)?> </span>
                 </p>
             </div>
-            <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+            <p class="text-center"><a href="/payment" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
         </div>
     </div>
     </div>

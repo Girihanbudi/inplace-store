@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-sm-6">
                 <p class="text-muted"> {{__('This month')}} </p>
-                <h3>$34,252</h3>
-                <p class="text-muted"><span class="text-success mr-2"> 12% <i class="mdi mdi-arrow-up"></i> </span> {{__('From previous period')}} </p>
+                <h3>Rp 120.000</h3>
+                <p class="text-muted"><span class="text-success mr-2"> 100% <i class="mdi mdi-arrow-up"></i> </span> {{__('From previous period')}} </p>
 
                 <div class="mt-4">
                     <a href="#" class="btn btn-primary waves-effect waves-light btn-sm"> {{__('View More')}} <i class="mdi mdi-arrow-right ml-1"></i></a>
