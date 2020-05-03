@@ -23,7 +23,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/admin/orders"> {{__('Manage Order')}} </a></li>
-                        <li><a href="/admin/order/add"> {{__('Add Order')}} </a></li>
+                        {{-- <li><a href="/admin/order/add"> {{__('Add Order')}} </a></li> --}}
                     </ul>
                 </li>
 
@@ -54,14 +54,14 @@
                         <i class="fas fa-file-signature"></i>
                         <span> {{__('Reports')}} </span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
+                    {{-- <ul class="sub-menu" aria-expanded="false">
                         <li><a href="#"> {{__('Transactions')}} </a></li>
                         <li><a href="#"> {{__('Item Sales')}} </a></li>
                         <li><a href="#"> {{__('Item Ranks')}} </a></li>
                         <li><a href="#"> {{__('Trafics')}} </a></li>
                         <li><a href="#"> {{__('Provits')}} </a></li>
                         <li><a href="#"> {{__('Socials')}} </a></li>
-                    </ul>
+                    </ul> --}}
                 </li>
             </ul>
         </div>

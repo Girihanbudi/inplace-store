@@ -28,6 +28,8 @@ class CreateShipmentsTable extends Migration
         Schema::table('shipments', function ($table) { 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('courier_id')->references('id')->on('couriers');
+            $table->foreign('origin')->references('city_id')->on('postal_codes');
+            $table->foreign('destination')->references('city_id')->on('postal_codes');
         });
     }
 
