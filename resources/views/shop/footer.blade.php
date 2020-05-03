@@ -23,10 +23,9 @@
           <div class="ftco-footer-widget mb-4 ml-md-5">
             <h2 class="ftco-heading-2"> {{__('Menu')}} </h2>
             <ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block"> {{__('Shop')}} </a></li>
-              <li><a href="#" class="py-2 d-block"> {{__('About')}} </a></li>
-              <li><a href="#" class="py-2 d-block"> {{__('Journal')}} </a></li>
-              <li><a href="#" class="py-2 d-block"> {{__('Contact Us')}} </a></li>
+              <li><a href="/shop" class="py-2 d-block"> {{__('Shop')}} </a></li>
+              <li><a href="/blog" class="py-2 d-block"> {{__('Blog')}} </a></li>
+              <li><a href="/contact" class="py-2 d-block"> {{__('Contact Us')}} </a></li>
             </ul>
           </div>
         </div>
@@ -35,14 +34,10 @@
             <h2 class="ftco-heading-2"> {{__('Help')}} </h2>
             <div class="d-flex">
                 <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                  <li><a href="#" class="py-2 d-block"> {{__('Shipping Information')}} </a></li>
-                  <li><a href="#" class="py-2 d-block"> {{__('Returns & Exchange')}} </a></li>
-                  <li><a href="#" class="py-2 d-block"> {{__('Terms & Conditions')}} </a></li>
-                  <li><a href="#" class="py-2 d-block"> {{__('Privacy Policy')}} </a></li>
-                </ul>
-                <ul class="list-unstyled">
-                  <li><a href="#" class="py-2 d-block"> {{__('FAQs')}} </a></li>
-                  <li><a href="#" class="py-2 d-block"> {{__('Contact')}} </a></li>
+                  <li><a href="/policy/shipment" class="py-2 d-block"> {{__('Shipping Information')}} </a></li>
+                  <li><a href="/policy/return" class="py-2 d-block"> {{__('Returns & Exchange')}} </a></li>
+                  <li><a href="/policy/condition" class="py-2 d-block"> {{__('Terms & Conditions')}} </a></li>
+                  <li><a href="/policy/privacy" class="py-2 d-block"> {{__('Privacy Policy')}} </a></li>
                 </ul>
               </div>
           </div>

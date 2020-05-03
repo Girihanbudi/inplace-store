@@ -86,12 +86,88 @@
                                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                                         </a>
                                                         <ul class="dropdown-menu dropdown-menu-right">
-                                                            <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success mr-1"></i> Edit</a></li>
-                                                            <li><a href="#" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger mr-1"></i> Delete</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#edit-{{$user->id}}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success mr-1"></i> Edit</a></li>
+                                                            <li><a href="#" data-toggle="modal" data-target="#delete-{{$user->id}}" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger mr-1"></i> Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>
                                             </tr>
+
+
+                                            <!-- Modal Delete -->
+                                            <div class="modal fade" id="delete-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteTitle">Delete Product</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure want to remove this product?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <form action="/admin/product/remove={{$user->id}}">
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal Edit -->
+                                            <div class="modal fade" id="edit-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteTitle">Edit Product</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-md-2 col-form-label">Username</label>
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control" type="text" value="{{$user->name}}" id="example-text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="example-text-input" class="col-md-2 col-form-label">Email</label>
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control" type="text" value="{{$user->email}}" id="example-text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control" type="email" value="{{$user->address}}" id="example-email-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="example-url-input" class="col-md-2 col-form-label">Role</label>
+                                                                <div class="col-md-10">
+                                                                    <input class="form-control" type="url" value="{{$user->is_admin}}" id="example-url-input">
+                                                                </div>
+                                                            </div>               
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="modal-footer">
+                                                        <form action="/admin/product/edit={{$user->id}}">
+                                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                                            </form>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -109,4 +185,5 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
+
 @endsection
