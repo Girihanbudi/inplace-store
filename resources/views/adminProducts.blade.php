@@ -181,30 +181,31 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteTitle">Add</h5>
+                                                <h5 class="modal-title" id="deleteTitle">Add {{$product->name . ' - '. $product->color . ' ('.$product->size.')'}}</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-md-4 col-form-label">Add Item</label>
-                                                    <div class="col-md-8">
-                                                            <input data-parsley-type="digits" type="text"
-                                                                    class="form-control" required
-                                                                    placeholder="Enter only digits"/>
+                                            <form action="/admin/product/addqty" method="post">
+                                                <div class="modal-body">
+                                                    {{ csrf_field() }}
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-md-4 col-form-label">Add Item</label>
+                                                        <input type="hidden" id="info_id" name="info_id" value="{{$product->info_id}}">
+                                                        <div class="col-md-8">
+                                                                <input data-parsley-type="digits" type="text"
+                                                                        id="quantity" name="quantity"
+                                                                        class="form-control" required
+                                                                        placeholder="Enter only digits"/>
+                                                        </div>
                                                     </div>
+
                                                 </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                            <form action="/admin/product/add={{$product->info_id}}">
-                                                    <button type="submit" class="btn btn-success"> Add </button>
-                                                </form>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                            </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-success"> Add </button> 
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -219,22 +220,23 @@
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                Are you sure want to remove this product?
-                                            </div>
-                                            <div class="modal-footer">
-                                            <form action="/admin/product/remove={{$product->info_id}}">
+                                            <form action="/admin/product/delete" method="GET">                                                
+                                                <div class="modal-body">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" id="info_id" name="info_id" value="{{$product->info_id}}">
+                                                    Are you sure want to remove this product?
+                                                </div>
+                                                <div class="modal-footer">
                                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                            </div>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Modal Edit -->
-                            <div class="modal fade" id="edit-{{$product->info_id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                                <div class="modal fade" id="edit-{{$product->info_id}}" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -243,84 +245,86 @@
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-md-2 col-form-label">Item Image</label>
-                                                    <div class="col-md-10">
-                                                        <div class="fallback">
-                                                            <input name="file" type="file" multiple="multiple">
-                                                        </div>
-                                                        <div class="dz-message needsclick">
-                                                            <div class="mb-3">
-                                                                <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                            <form action="/admin/product/edit" method="post">
+                                                <div class="modal-body">
+                                                    {{ csrf_field() }}
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-md-2 col-form-label">Item Image</label>
+                                                        <div class="col-md-10">
+                                                            <div class="fallback">
+                                                                <input id="image" name="image" type="file" multiple="multiple">
                                                             </div>
+                                                            <div class="dz-message needsclick">
+                                                                <div class="mb-3">
+                                                                    <i class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                                </div>
+                                                            </div>
+            
                                                         </div>
-        
+                                                    </div>
+                                                    
+                                                    <input type="hidden" id="{{$product->id}}" name="product_id" value="{{$product->id}}">
+                                                    <input type="hidden" id="{{$product->info_id}}" name="info_id" value="{{$product->info_id}}">
+
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-md-2 col-form-label">Item Name</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" id="name" name="name" type="text" value="{{$product->name}}" id="example-text-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input" class="col-md-2 col-form-label">Color</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" id="color" name="color" type="text" value="{{$product->color}}" id="example-text-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="example-email-input" class="col-md-2 col-form-label">size</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" id="size" name="size" type="text" value="{{$product->size}}" id="example-email-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="example-url-input" class="col-md-2 col-form-label">Price</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" type="text" value="{{$product->price}}" id="example-url-input">
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="form-group row">
+                                                        <label class="col-md-2 col-form-label">Category</label>
+                                                        <div class="col-md-10">
+                                                            <select name="category" class="form-control select2">   
+                                                                
+                                                                @foreach ($product_categories as $category)
+                                                                    <option id="category-{{$product->info_id}}" name="category-{{$product->info_id}}" value="{{$category->name}}"> {{$category->name}} </option>  
+                                                                @endforeach                                                        
+                                                                    
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-2 col-form-label">Types</label>
+                                                        <div class="col-md-10">
+
+                                                            @foreach ($product_types as $type)
+                                                                <div class=" custom-control custom-checkbox">
+                                                                <input type="checkbox" id="type-{{$type->id}}" name="type[]" value="{{$type->id}}" class="custom-control-input">
+                                                                    <label class="custom-control-label" for="type-{{$type->id}}">&nbsp;</label>
+                                                                    {{$type->name}}
+                                                                </div>
+                                                            @endforeach                                                  
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-md-2 col-form-label">Item Name</label>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control" type="text" value="{{$product->name}}" id="example-text-input">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-text-input" class="col-md-2 col-form-label">Color</label>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control" type="text" value="{{$product->color}}" id="example-text-input">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-email-input" class="col-md-2 col-form-label">size</label>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control" type="email" value="{{$product->size}}" id="example-email-input">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="example-url-input" class="col-md-2 col-form-label">Price</label>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control" type="url" value="{{$product->price}}" id="example-url-input">
-                                                    </div>
-                                                </div>
-                                            
-                                                <div class="form-group row">
-                                                    <label class="col-md-2 col-form-label">Category</label>
-                                                    <div class="col-md-10">
-                                                        <select class="form-control select2">   
-                                                            
-                                                            @foreach ($product_categories as $category)
-                                                                <option value="{{$category->name}}"> {{$category->name}} </option>  
-                                                            @endforeach                                                        
-                                                                 
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-md-2 col-form-label">Types</label>
-                                                    <div class="col-md-10">
-
-                                                        @foreach ($product_types as $type)
-                                                            <div class=" custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="{{$type->id}}">
-                                                                <label class="custom-control-label" for="{{$type->name}}">&nbsp;</label>
-                                                                {{$type->name}}
-                                                            </div>
-                                                        @endforeach                                                  
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="modal-footer">
-                                            <form action="/admin/product/edit={{$product->info_id}}">
+                                                <div class="modal-footer">
                                                     <button type="submit" class="btn btn-primary">Edit</button>
-                                                </form>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                            </div>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

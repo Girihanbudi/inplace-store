@@ -35,33 +35,35 @@
                                 <h4 class="card-title"> {{__('User Informations')}} </h4>
                                 <p class="card-title-desc">{{__('Fill all information below')}} </p>
 
-                                <form>
+                                <form action="/admin/user/newuser" method="POST">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="username"> {{__('User Name')}} </label>
-                                                <input id="username" name="username" type="text" class="form-control">
+                                                <label for="name"> {{__('Name')}} </label>
+                                                <input id="name" name="name" type="text" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label for="useremail"> {{__('Email')}} </label>
-                                                <input id="useremail" name="useremail" type="text" class="form-control">
+                                                <label for="email"> {{__('Email')}} </label>
+                                                <input id="email" name="email" type="email" class="form-control">
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="control-label"> {{_('Gender')}} </label>
-                                                <select class="form-control select2">
+                                                    <option  value="1"> {{__('Male')}} </option>
+                                                <select id="gender" name="gender" class="form-control select2">
                                                     <option> {{__('Select')}} </option>
-                                                    <option value="1"> {{__('Male')}} </option>
-                                                    <option value="0"> {{__('Female')}} </option>
+                                                    <option id="gender" name="gender" value="1"> {{__('Male')}} </option>
+                                                    <option id="gender" name="gender" value="0"> {{__('Female')}} </option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="control-label"> {{_('Role')}} </label>
-                                                <select class="form-control select2">
+                                                <select id="role" name="role"  class="form-control select2">
                                                     <option> {{__('Select')}} </option>
-                                                    <option value="0"> {{__('User/Guest')}} </option>
-                                                    <option value="1"> {{__('Admin')}} </option>
+                                                    <option id="role" name="role" value="0"> {{__('User/Guest')}} </option>
+                                                    <option id="role" name="role" value="1"> {{__('Admin')}} </option>
                                                 </select>
                                             </div>
 
@@ -69,25 +71,38 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="userpassword"> {{__('Password')}} </label>
-                                                <input id="userpassword" name="userpassword" type="text" class="form-control">
+                                                <label for="password"> {{__('Password')}} </label>
+                                                <input id="password" name="password" type="password" class="form-control">
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="userpassword"> {{__('Retype Password')}} </label>
-                                                <input id="userpassword" name="userpassword" type="text" class="form-control">
+                                                <label for="re-password"> {{__('Retype Password')}} </label>
+                                                <input id="re-password" name="re-password" type="password" class="form-control">
+                                                <span id='message'></span>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="useraddress"> {{__('Address')}} </label>
-                                                <textarea class="form-control" id="useraddress" rows="5"></textarea>
+                                                <label class="control-label"> {{_('City')}} </label>
+                                                <select id="city" name="city"  class="form-control select2">
+                                                    <option> {{__('Select')}} </option>
+                                                    
+                                                    @foreach ($cities as $city)
+                                                        <option id="city_id" name="city_id" value="{{$city->city_id}}"> <?php echo $city->type?> {{$city->name}} </option>                                                        
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="address"> {{__('Address')}} </label>
+                                                <textarea class="form-control" id="address" name="address" rows="5"></textarea>
                                             </div>
                                             
                                         </div>
                                     </div>
-
+                                    <br>
                                     <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">{{__('Save Changes')}} </button>
-                                    <button type="submit" class="btn btn-secondary waves-effect"> {{__('Cancel')}} </button>
+                                    <button type="button" class="btn btn-secondary waves-effect"> {{__('Cancel')}} </button>
                                 </form>
 
                             </div>
@@ -101,4 +116,12 @@
         </div>
         <!-- End Page-content -->
 
+        <script>
+            $('#password, #re-password').on('keyup', function () {
+            if ($('#password').val() == $('#re-password').val()) {
+                $('#message').html('').css('color', 'green');
+            } else 
+                $('#message').html('Password need to be the same').css('color', 'red');
+            });
+        </script>
 @endsection

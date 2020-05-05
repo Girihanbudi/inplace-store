@@ -17,6 +17,8 @@
         <link href="/adminresource/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="/adminresource/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" />
+        {{-- Password Validator --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     </head>
 

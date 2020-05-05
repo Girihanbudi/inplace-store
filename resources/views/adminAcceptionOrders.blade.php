@@ -18,7 +18,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="admin/home"> {{__('Main')}} </a></li>
-                                    <li class="breadcrumb-item active"> {{__('Orders')}} </li>
+                                    <li class="breadcrumb-item active"> {{__('Orders Acception')}} </li>
                                 </ol>
                             </div>
 
@@ -40,11 +40,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-sm-8">
-                                        <div class="text-sm-right">
-                                            <a href="/admin/order/add" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i class="mdi mdi-plus mr-1"></i> {{__('Add New Order')}} </a>
-                                        </div>
-                                    </div><!-- end col--> --}}
                                 </div>
         
                                 <div class="table-responsive">
@@ -54,9 +49,7 @@
                                                 <th> {{__('Order ID')}} </th>
                                                 <th> {{__('Billing Name')}} </th>
                                                 <th> {{__('Date')}} </th>
-                                                <th> {{__('Total')}} </th>
-                                                <th> {{__('Bank')}} </th>
-                                                <th> {{__('Status')}} </th>
+                                                <th> {{__('Address')}} </th>
                                                 <th> {{__('View Details')}} </th>
                                             </tr>
                                         </thead>
@@ -68,36 +61,12 @@
                                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold"> {{ $transaction->id }} </a> </td>
                                                     <td> {{$transaction->name}} </td>
                                                     <td> {{$transaction->date}} </td>
-                                                    <td> Rp <?php echo number_format($transaction->price) ?> </td>
-                                                    <td> {{$transaction->bank_name}} </td>
-                                                    
-                                                    @if($transaction->status == 'paid')
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-12"> {{__('Paid')}} </span>
-                                                        </td>
-                                                    @elseif ($transaction->status == 'canceled')
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-danger font-size-12"> {{__('Canceled')}} </span>
-                                                        </td>
-                                                    @elseif ($transaction->status == 'pending')
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-warning font-size-12"> {{__('Pending')}} </span>
-                                                        </td>
-                                                    @elseif ($transaction->status == 'shiping')
-                                                    <td>
-                                                        <span class="badge badge-pill badge-soft-primary font-size-12"> {{__('Shiping')}} </span>
-                                                    </td>
-                                                    @elseif ($transaction->status == 'finish')
-                                                    <td>
-                                                        <span class="badge badge-pill badge-soft-secondary font-size-12"> {{__('Finish')}} </span>
-                                                    </td>
-                                                    @endif
-
+                                                    <td> {{$transaction->address}} </td>
                                                     <td>
                                                         <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-toggle="modal" data-target="#detail-{{$transaction->id}}">
+                                                        <a href="accept/{{$transaction->id}}" class="btn btn-primary btn-sm btn-rounded">
                                                             {{__('View Details')}}
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

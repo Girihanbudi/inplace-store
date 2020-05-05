@@ -57,13 +57,23 @@ Route::get('/admin/profile', function(){
 });
 
 Route::get('/admin/orders', 'TransactionController@getTransaction');
-Route::get('/admin/orders/add', 'TransactionController@addTransaction');
+Route::get('/admin/orders/billing', 'TransactionController@getBilling');
+Route::get('/admin/orders/acception', 'TransactionController@getOrder');
+Route::post('/admin/orders/accept', 'TransactionController@acceptOrder');
+
+Route::get('/admin/orders/accept/{id}', 'TransactionController@viewOrder');
+Route::get('/admin/orders/finish', 'TransactionController@getFinishOrder');
+// Route::get('/admin/orders/add', 'TransactionController@addTransaction');
+
 
 Route::get('/admin/products', 'ProductController@getProducts');
+Route::post('/admin/product/addqty', 'ProductController@addQtyProduct');
+Route::post('/admin/product/edit', 'ProductController@editProduct');
+Route::get('/admin/product/delete', 'ProductController@deleteProduct');
+
 Route::get('/admin/product/add', 'ProductController@getCategoryAndType');
 
 Route::get('/admin/users', 'UserController@getUsers');
-Route::get('/admin/user/add', function(){
-    return view('adminUserAdd');
-});
+Route::get('/admin/user/add', 'UserController@getCity');
+Route::post('/admin/user/newuser', 'UserController@addNewUser');
 

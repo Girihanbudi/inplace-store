@@ -14,17 +14,19 @@ class UserController extends Controller
         return view('adminUsers', ['users' => $users]);
     }
 
-    public function insertUser(){
+    public function addNewUser(Request $request){
+
         DB::table('users')->insert([
-            'name'      => $_REQUEST->name,
-            'email'     => $_REQUEST->email,
-            'is_male'   => $_REQUEST->is_male,
-            'password'  => $_REQUEST->password,
-            'address'   => $_REQUEST->address,
-            'city_id'   => $_REQUEST->city
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'is_male'   => $request->gender,
+            'is_admin'  => $request->role,
+            'password'  => bcrypt($request->password),
+            'address'   => $request->address,
+            'city_id'   => $request->city
         ]);
 
-        return redirect('/admin/users/add');
+        return redirect('/admin/user/add');
     }
 
     public function deleteUser(){
@@ -33,5 +35,12 @@ class UserController extends Controller
 
     public function editUser(){
 
+    }
+
+    public function getCity(){
+        $cities = DB::table('postal_codes')
+                ->get();        
+        
+        return view('adminUserAdd', ['cities'=>$cities]);
     }
 }

@@ -99,13 +99,13 @@
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteTitle">Delete Product</h5>
+                                                            <h5 class="modal-title" id="deleteTitle">Delete User</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Are you sure want to remove this product?
+                                                        Are you sure want to remove this {{$user->name}}?
                                                         </div>
                                                         <div class="modal-footer">
                                                         <form action="/admin/product/remove={{$user->id}}">
@@ -123,47 +123,47 @@
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteTitle">Edit Product</h5>
+                                                            <h5 class="modal-title" id="deleteTitle">Edit User</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            
-                                                            <div class="form-group row">
-                                                                <label for="example-text-input" class="col-md-2 col-form-label">Username</label>
-                                                                <div class="col-md-10">
-                                                                    <input class="form-control" type="text" value="{{$user->name}}" id="example-text-input">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="example-text-input" class="col-md-2 col-form-label">Email</label>
-                                                                <div class="col-md-10">
-                                                                    <input class="form-control" type="text" value="{{$user->email}}" id="example-text-input">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
-                                                                <div class="col-md-10">
-                                                                    <input class="form-control" type="email" value="{{$user->address}}" id="example-email-input">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="example-url-input" class="col-md-2 col-form-label">Role</label>
-                                                                <div class="col-md-10">
-                                                                    <input class="form-control" type="url" value="{{$user->is_admin}}" id="example-url-input">
-                                                                </div>
-                                                            </div>               
-                                                            
-                                                        </div>
-                                                        
-                                                        <div class="modal-footer">
-                                                        <form action="/admin/product/edit={{$user->id}}">
-                                                                <button type="submit" class="btn btn-primary">Edit</button>
-                                                            </form>
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <form action="/admin/user/edit" method="POST">
 
-                                                        </div>
+                                                            <div class="modal-body">                                                                
+                                                                <div class="form-group row">
+                                                                    <label for="example-text-input" class="col-md-2 col-form-label">Username</label>
+                                                                    <div class="col-md-10">
+                                                                        <input class="form-control" type="text" value="{{$user->name}}" id="example-text-input">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="example-text-input" class="col-md-2 col-form-label">Email</label>
+                                                                    <div class="col-md-10">
+                                                                        <input class="form-control" type="text" value="{{$user->email}}" id="example-text-input">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
+                                                                    <div class="col-md-10">
+                                                                        <input class="form-control" type="email" value="{{$user->address}}" id="example-email-input">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="example-url-input" class="col-md-2 col-form-label">Role</label>
+                                                                    <div class="col-md-10">
+                                                                        <input class="form-control" type="url" value="{{$user->is_admin}}" id="example-url-input">
+                                                                    </div>
+                                                                </div>               
+                                                                
+                                                            </div>
+                                                            
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-primary">Edit</button>                                                      
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                            
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

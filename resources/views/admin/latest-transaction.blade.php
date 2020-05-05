@@ -37,7 +37,7 @@
                                     {{ $transaction->date }}                                
                                 </td>
                                 <td>{{ $transaction->name }}</td>
-                                <td>{{ $transaction->price }}</td>
+                                <td> Rp <?php echo number_format($transaction->price)?></td>
 
                                 @if($transaction->status == 'paid')
                                     <td>
@@ -47,7 +47,7 @@
                                     <td>
                                         <span class="badge badge-pill badge-soft-danger font-size-12"> {{__('Canceled')}} </span>
                                     </td>
-                                @else 
+                                @elseif ($transaction->status == 'pending')
                                     <td>
                                         <span class="badge badge-pill badge-soft-warning font-size-12"> {{__('Pending')}} </span>
                                     </td>

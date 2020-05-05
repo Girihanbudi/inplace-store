@@ -13,7 +13,7 @@ class ProductController extends Controller
         $products = DB::table('products')
                         ->select('products.id', 'product_infos.id as info_id', 'products.name', 'products.price', 'products.weight', 'products.rating', 'products.describe', 'product_infos.color', 'product_infos.size', 'product_infos.quantity')
                         ->leftJoin('product_infos', 'products.id', '=', 'product_infos.product_id')
-                        ->paginate(5);
+                        ->paginate(9);
 
         $product_types = DB::table('product_types')->get();
         $product_categories = DB::table('product_categories')->get();
@@ -37,6 +37,43 @@ class ProductController extends Controller
                         ->get();
 
         return view('productViewer', ['product' => $product, 'products' => $products]);
+    }
+
+    public function addQtyProduct(Request $request){
+        $product_info = DB::table('product_infos')
+        ->where('id', $request->info_id)
+        ->get();
+
+        DB::table('product_infos')
+        ->where('id', $request->info_id)
+        ->update(['quantity'=> $product_info[0]->quantity + $request->quantity]);
+
+        return redirect('/admin/products');
+    }
+
+    public function editProduct(Request $request){
+        return $request;
+        DB::table('product_infos')
+        ->where('id', $request->info_id)
+        ->update(['size'=> $request->size, 'color'=> $request->color]);
+
+        DB::table('products')
+        ->where('id', $request->id)
+        ->update(['name'=>$request->name, 
+                'price'=>$request->price,
+                 'weight'=>$request->weight,
+                  'describe'=>$request->describe
+        ]);
+
+        return redirect('/admin/products');
+    }
+
+    public function deleteProduct(Request $request){
+        DB::table('product_infos')
+        ->where('id', $request->info_id)
+        ->delete();
+
+        return redirect('/admin/products');
     }
 
     public function shopProducts()
