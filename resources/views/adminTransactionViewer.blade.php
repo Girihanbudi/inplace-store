@@ -7,25 +7,24 @@
 
         <div class="page-content">
             <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18"> {{__('Transaction Viewer')}} </h4>
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0 font-size-18"> {{__('Transaction Viewer')}} </h4>
-
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="/admin/home"> Main </a></li>
-                                    <li class="breadcrumb-item"><a href="/admin/orders"> Transactions </a></li>
-                                    <li class="breadcrumb-item active"> Manage Order {{$transaction[0]->id}}</li>
-                                </ol>
-                            </div>
-
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/admin/home"> Main </a></li>
+                                <li class="breadcrumb-item"><a href="/admin/orders"> Transactions </a></li>
+                                <li class="breadcrumb-item active"> Transaction {{$transaction[0]->id}}</li>
+                            </ol>
                         </div>
+
                     </div>
                 </div>
-                <!-- end page title -->
+            </div>
+            <!-- end page title -->
 
                 <div class="row">
 
@@ -119,7 +118,20 @@
                                 <div class="modal-body">
                                     <p class="mb-2"> {{__('Transaction id:')}} <span class="text-primary font-size-12">{{$transaction[0]->id}}</span></p>
                                     <p class="mb-4"> {{__('Billing Name:')}} <span class="text-primary font-size-12"> {{$user[0]->name}} </span></p>
-                                    <p class="mb-4"> {{__('Status:')}} <span class="badge badge-pill badge-soft-success font-size-12"> {{$transaction[0]->status}} </span></p>
+                                    <p class="mb-4"> {{__('Status:')}} 
+                                        @if ($transaction[0]->status == 'cancel')
+                                            <span class="badge badge-pill badge-soft-danger font-size-12"> {{$transaction[0]->status}} </span>    
+                                        @elseif ($transaction[0]->status == 'paid')
+                                            <span class="badge badge-pill badge-soft-success font-size-12"> {{$transaction[0]->status}} </span>
+                                        @elseif ($transaction[0]->status == 'shipping')
+                                            <span class="badge badge-pill badge-soft-primary font-size-12"> {{$transaction[0]->status}} </span>
+                                        @elseif ($transaction[0]->status == 'finish')
+                                            <span class="badge badge-pill badge-soft-secondary font-size-12"> {{$transaction[0]->status}} </span>
+                                        @elseif ($transaction[0]->status == 'pending')
+                                            <span class="badge badge-pill badge-soft-warning font-size-12"> {{$transaction[0]->status}} </span>                                        
+                                        @endif
+
+                                    </p>
                                     <div class="table-responsive">
                                         <table class="table table-centered table-nowrap">
                                             <thead>
@@ -183,18 +195,6 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
-                                </div>
-                                <div class="col-11">
-                                    <div class="modal-footer">
-                                        <form action="/admin/orders/accept" method="post">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" id="shipment-{{$shipment[0]->id}}" name="shipment_id" value="{{$shipment[0]->id}}">
-                                            <input type="hidden" id="shipment-{{$transaction[0]->id}}" name="id" value="{{$transaction[0]->id}}">
-                                            <button type="submit" class="btn btn-success" >Accept Purchase</button>
-                                        </form>
-                                        <button type="button" class="btn btn-danger" >Reject Purchase</button>
-    
                                     </div>
                                 </div>
                             </div>

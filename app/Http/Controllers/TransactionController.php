@@ -46,12 +46,12 @@ class TransactionController extends CourierCostController
 
         DB::table('transactions')
         ->where('id', '=', $request->id)
-        ->update(['status'=>'shiping']);
+        ->update(['status'=>'shipping']);
 
         return redirect('/admin/orders/acception');
     }
 
-    public function getTransaction()
+    public function getTransactions()
     {
         // retrive data from database
         $transactions = DB::table('transactions')
@@ -64,6 +64,36 @@ class TransactionController extends CourierCostController
 
         // send data to admin Home
         return view('adminOrders', ['transactions' => $transactions]);
+    }
+
+    public function viewTransaction($id){
+        $transaction = DB::table('transactions')
+        ->where('id', '=', $id)    
+        ->get();
+
+        $user = DB::table('users')
+            ->where('id', '=', $transaction[0]->user_id)
+            ->get();
+
+        $details = DB::table('transaction_details')
+                ->select('products.name as name', 'products.price as price', 'transaction_details.quantity as quantity', 'transaction_details.price as total', 'products.weight as weight', 'product_infos.color as color', 'product_infos.size as size')
+                ->where('transaction_id', '=', $transaction[0]->id)
+                ->leftJoin('product_infos', 'product_infos.id', '=', 'transaction_details.product_info_id')
+                ->leftJoin('products', 'products.id', '=', 'product_infos.id')
+                ->get();
+
+        $shipment = DB::table('shipments')
+                ->where('id', '=', $transaction[0]->shipment_id)
+                ->get();    
+
+        $total_weight = 0;
+        foreach ($details as $detail){
+        $total_weight += $detail->weight;
+        }
+
+        $courier = json_decode(CourierCostController::getCourierData($total_weight * 100), false); 
+
+        return view ('adminTransactionViewer', ['user'=>$user, 'transaction'=>$transaction, 'details'=>$details, 'courier'=>$courier, 'shipment'=>$shipment]);
     }
 
     public function getBilling()
@@ -97,6 +127,21 @@ class TransactionController extends CourierCostController
 
         // send data to admin Home
         return view('adminAcceptionOrders', ['transactions' => $transactions]);
+    }
+
+    public function getShippingOrder(){
+        // retrive data from database
+        $transactions = DB::table('transactions')
+        ->select('transactions.id', 'users.name','shipments.shipment_date as date', 'shipments.price', 'postal_codes.name as destination')
+        ->where('transactions.status', '=', 'shipping')
+        ->leftJoin('users', 'transactions.user_id', '=', 'users.id')
+        ->leftJoin('shipments', 'transactions.shipment_id', '=', 'shipments.id')
+        ->leftJoin('postal_codes', 'shipments.destination', '=', 'postal_codes.city_id')
+        ->groupBy('transactions.id')
+        ->paginate(15);
+
+        // send data to admin Home
+        return view('adminShippingOrders', ['transactions' => $transactions]);
     }
 
     public function getFinishOrder(){

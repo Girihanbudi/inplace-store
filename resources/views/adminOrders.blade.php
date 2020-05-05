@@ -13,12 +13,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0 font-size-18"> {{__('Orders')}} </h4>
+                            <h4 class="mb-0 font-size-18"> {{__('Transactions')}} </h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="admin/home"> {{__('Main')}} </a></li>
-                                    <li class="breadcrumb-item active"> {{__('Orders')}} </li>
+                                    <li class="breadcrumb-item active"> {{__('Transactions')}} </li>
                                 </ol>
                             </div>
 
@@ -83,9 +83,9 @@
                                                         <td>
                                                             <span class="badge badge-pill badge-soft-warning font-size-12"> {{__('Pending')}} </span>
                                                         </td>
-                                                    @elseif ($transaction->status == 'shiping')
+                                                    @elseif ($transaction->status == 'shipping')
                                                     <td>
-                                                        <span class="badge badge-pill badge-soft-primary font-size-12"> {{__('Shiping')}} </span>
+                                                        <span class="badge badge-pill badge-soft-primary font-size-12"> {{__('Shipping')}} </span>
                                                     </td>
                                                     @elseif ($transaction->status == 'finish')
                                                     <td>
@@ -95,9 +95,9 @@
 
                                                     <td>
                                                         <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-toggle="modal" data-target="#detail-{{$transaction->id}}">
+                                                        <a href="orders/transaction={{$transaction->id}}" class="btn btn-primary btn-sm btn-rounded">
                                                             {{__('View Details')}}
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

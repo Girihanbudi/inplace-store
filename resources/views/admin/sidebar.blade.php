@@ -24,6 +24,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/admin/orders"> {{__('Transactions')}} </a></li>
                         <li><a href="/admin/orders/billing"> {{__('Manage Billing')}} </a></li>
+                        <li><a href="/admin/orders/shipping"> {{__('Shipping Order')}} </a></li>
                         <li><a href="/admin/orders/acception"> {{__('Manage Order')}} </a></li>
                         <li><a href="/admin/orders/finish"> {{__('Finish Order')}} </a></li>
                         {{-- <li><a href="/admin/order/add"> {{__('Add Order')}} </a></li> --}}
@@ -52,12 +53,12 @@
                     </ul>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fas fa-file-signature"></i>
                         <span> {{__('Reports')}} </span>
                     </a>
-                    {{-- <ul class="sub-menu" aria-expanded="false">
+                        <ul class="sub-menu" aria-expanded="false">
                         <li><a href="#"> {{__('Transactions')}} </a></li>
                         <li><a href="#"> {{__('Item Sales')}} </a></li>
                         <li><a href="#"> {{__('Item Ranks')}} </a></li>

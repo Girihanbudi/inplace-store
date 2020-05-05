@@ -13,12 +13,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0 font-size-18"> {{__('Manage Billings')}} </h4>
+                            <h4 class="mb-0 font-size-18"> {{__('Shipping Orders')}} </h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="admin/home"> {{__('Main')}} </a></li>
-                                    <li class="breadcrumb-item active"> {{__('Manage Billings')}} </li>
+                                    <li class="breadcrumb-item active"> {{__('Shipping Orders')}} </li>
                                 </ol>
                             </div>
 
@@ -48,10 +48,10 @@
                                             <tr>
                                                 <th> {{__('Order ID')}} </th>
                                                 <th> {{__('Billing Name')}} </th>
-                                                <th> {{__('Date')}} </th>
-                                                <th> {{__('Total')}} </th>
-                                                <th> {{__('Payment Status')}} </th>
-                                                <th> {{__('View Details')}} </th>
+                                                <th> {{__('Shipping Date')}} </th>
+                                                <th> {{__('Courier')}} </th>
+                                                <th> {{__('Destination')}} </th>
+                                                <th> {{__('Shipment Cost')}} </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,27 +59,13 @@
                                             @foreach ($transactions as $transaction)                                               
                                                 
                                                 <tr>
-                                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold"> {{ $transaction->id }} </a> </td>
+                                                    <td> {{ $transaction->id }} </td>
                                                     <td> {{$transaction->name}} </td>
                                                     <td> {{$transaction->date}} </td>
-                                                    <td> Rp <?php echo number_format($transaction->price) ?> </td>
-                                                    
-                                                    @if ($transaction->status == 'canceled')
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-danger font-size-12"> {{__('Canceled')}} </span>
-                                                        </td>
-                                                    @else 
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-warning font-size-12"> {{__('Pending')}} </span>
-                                                        </td>
-                                                    @endif
-
-                                                    <td>
-                                                        <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-toggle="modal" data-target="#detail-{{$transaction->id}}">
-                                                            {{__('View Details')}}
-                                                        </button>
-                                                    </td>
+                                                    <td> JNE Reguler </td>
+                                                    <td> {{$transaction->destination}} </td>
+                                                    <td> Rp <?php echo number_format($transaction->price) ?> </td>                                                
+                                                    <td>  </td>
                                                 </tr>
                                             @endforeach
                                             

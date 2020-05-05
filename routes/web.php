@@ -56,15 +56,20 @@ Route::get('/admin/profile', function(){
     return view('adminProfile');
 });
 
-Route::get('/admin/orders', 'TransactionController@getTransaction');
+Route::get('/admin/orders', 'TransactionController@getTransactions');
+Route::get('/admin/orders/transaction={id}', 'TransactionController@viewTransaction');
+
 Route::get('/admin/orders/billing', 'TransactionController@getBilling');
+
 Route::get('/admin/orders/acception', 'TransactionController@getOrder');
 Route::post('/admin/orders/accept', 'TransactionController@acceptOrder');
+// Route::post('/admin/orders/reject', '');
 
 Route::get('/admin/orders/accept/{id}', 'TransactionController@viewOrder');
 Route::get('/admin/orders/finish', 'TransactionController@getFinishOrder');
 // Route::get('/admin/orders/add', 'TransactionController@addTransaction');
 
+Route::get('/admin/orders/shipping', 'TransactionController@getShippingOrder');
 
 Route::get('/admin/products', 'ProductController@getProducts');
 Route::post('/admin/product/addqty', 'ProductController@addQtyProduct');
