@@ -8,7 +8,7 @@
                 <h3><b>Payment Information</b></h3>
                 <p class="d-flex">
                     <span>Total</span>
-                    <span> Rp 123123 </span>
+                    <span> Rp 292.000 </span>
                 </p>
 
                 <hr>

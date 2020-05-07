@@ -7,24 +7,25 @@
 
         <div class="page-content">
             <div class="container-fluid">
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18"> {{__('Transaction Viewer')}} </h4>
 
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="/admin/home"> Main </a></li>
-                                <li class="breadcrumb-item"><a href="/admin/orders"> Transactions </a></li>
-                                <li class="breadcrumb-item active"> Transaction {{$transaction[0]->id}}</li>
-                            </ol>
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0 font-size-18"> {{__('Transaction Viewer')}} </h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="/admin/home"> Main </a></li>
+                                    <li class="breadcrumb-item"><a href="/admin/orders"> Transactions </a></li>
+                                    <li class="breadcrumb-item active"> Manage Order {{$transaction[0]->id}}</li>
+                                </ol>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <!-- end page title -->
+                <!-- end page title -->
 
                 <div class="row">
 
@@ -122,18 +123,7 @@
                                     <p class="mb-2"> {{__('Transaction id:')}} <span class="text-primary font-size-12">{{$transaction[0]->id}}</span></p>
                                     <p class="mb-4"> {{__('Billing Name:')}} <span class="text-primary font-size-12"> {{$user[0]->name}} </span></p>
                                     <p class="mb-4"> {{__('Status:')}} 
-                                        @if ($transaction[0]->status == 'cancel')
-                                            <span class="badge badge-pill badge-soft-danger font-size-12"> {{$transaction[0]->status}} </span>    
-                                        @elseif ($transaction[0]->status == 'paid')
-                                            <span class="badge badge-pill badge-soft-success font-size-12"> {{$transaction[0]->status}} </span>
-                                        @elseif ($transaction[0]->status == 'shipping')
-                                            <span class="badge badge-pill badge-soft-primary font-size-12"> {{$transaction[0]->status}} </span>
-                                        @elseif ($transaction[0]->status == 'finish')
-                                            <span class="badge badge-pill badge-soft-secondary font-size-12"> {{$transaction[0]->status}} </span>
-                                        @elseif ($transaction[0]->status == 'pending')
-                                            <span class="badge badge-pill badge-soft-warning font-size-12"> {{$transaction[0]->status}} </span>                                        
-                                        @endif
-
+                                        <span class="badge badge-pill badge-soft-warning font-size-12"> {{$transaction[0]->status}} </span>
                                     </p>
                                     <div class="table-responsive">
                                         <table class="table table-centered table-nowrap">
@@ -171,7 +161,8 @@
                                                 </tr>
                                                 @endforeach
                                                 
-                                                
+                                                <?php $total_payment = $subtotal + $shipment[0]->price?>
+
                                                 <tr>
                                                     <td colspan="4">
                                                         <h6 class="m-0 text-right">Sub Total:</h6>
@@ -197,20 +188,58 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                        </table>                                        
+                                        </table>
                                     </div>
                                 </div>
-
-                                <div class="col-10">
-                                    <div class="modal-footer">                                    
-                                        <a href="/admin/orders" class="btn btn-secondary" >Back</a>
+                                <div class="col-11">
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#confirm">Confirm Payment</button>
+                                        <a href="/admin/orders/billing" class="btn btn-secondary" >Back</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
+                    <!-- Modal Confirm Payment -->
+                    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteTitle">Confirm Payment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/admin/billing/accept" method="GET">                                                
+                                    <div class="modal-body">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" id="user_id" name="user_id" value="{{$user[0]->id}}">
+                                        <input type="hidden" id="transaction_id" name="transaction_id" value="{{$transaction[0]->id}}">
+                                        <input type="hidden" id="total_payment" name="total_payment" value="{{$total_payment}}">
+
+                                        <div class="form-group row">
+                                            <label for="bank_name" class="col-md-4 col-form-label">Bank Name</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" id="bank_name" name="bank_name" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="bank_account" class="col-md-4 col-form-label">Bank Account</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control" id="bank_account" name="bank_account" type="text" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Confirm</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     
                 </div>
             </div>

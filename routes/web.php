@@ -42,14 +42,13 @@ Route::post('/cart/addproduct', 'CartController@addToCart');
 Route::get('/cart', 'CartController@showCart');
 Route::get('/cart/discard/cartID={cart_id}&quantity={quantity}&infoID={info_id}', 'CartController@discard');
 
-Route::get('/payment={carts_id}', 'CartController@hide');
+Route::get('/payment/user_id={user_id}&destination={destination}&price={price}&total={total}', 'TransactionController@addTransaction'); 
 Route::get('/payment', function(){
     return view('payment');
 });
 
-Route::get('/order', function(){
-    return view('order');
-});
+Route::get('/order', 'TransactionController@unfinishTransaction');
+Route::get('/order/detail/{id}', 'TransactionController@transactionDetail');
 
 Route::get('/admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 Route::get('/admin/profile', function(){
@@ -60,6 +59,8 @@ Route::get('/admin/orders', 'TransactionController@getTransactions');
 Route::get('/admin/orders/transaction={id}', 'TransactionController@viewTransaction');
 
 Route::get('/admin/orders/billing', 'TransactionController@getBilling');
+Route::get('/admin/orders/billing/{id}', 'TransactionController@viewBilling');
+Route::get('/admin/billing/accept', 'TransactionController@acceptBilling');
 
 Route::get('/admin/orders/acception', 'TransactionController@getOrder');
 Route::post('/admin/orders/accept', 'TransactionController@acceptOrder');

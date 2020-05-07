@@ -54,7 +54,7 @@
                                                 <th> {{__('Order ID')}} </th>
                                                 <th> {{__('Billing Name')}} </th>
                                                 <th> {{__('Date')}} </th>
-                                                <th> {{__('Total')}} </th>
+                                                <th> {{__('Total Payment')}} </th>
                                                 <th> {{__('Bank')}} </th>
                                                 <th> {{__('Status')}} </th>
                                                 <th> {{__('View Details')}} </th>

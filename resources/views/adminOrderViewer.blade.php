@@ -101,7 +101,10 @@
                                                 <th scope="row"> {{__('Cost (live)')}} </th>
                                                 <td> Rp <?php echo number_format($courier->rajaongkir->results[0]->costs[1]->cost[0]->value) ?> </td>
                                             </tr>
-
+                                            <tr>
+                                                <th scope="row"> {{__('Delivery')}} </th>
+                                                <td> {{$courier->rajaongkir->results[0]->costs[1]->cost[0]->etd}} days </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -147,11 +150,11 @@
                                                     </td>
                                                     <td> {{$detail->color}} </td>
                                                     <td> {{$detail->size}} </td>
-                                                    <td> Rp <?php echo number_format($detail->total)?> </td>
+                                                    <td> Rp <?php echo number_format($detail->price * $detail->quantity)?> </td>
 
                                                     <?php 
                                                         $no +=1;
-                                                        $subtotal += $detail->total
+                                                        $subtotal += $detail->price * $detail->quantity
                                                     ?>
                                                 </tr>
                                                 @endforeach

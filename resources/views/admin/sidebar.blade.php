@@ -24,8 +24,8 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/admin/orders"> {{__('Transactions')}} </a></li>
                         <li><a href="/admin/orders/billing"> {{__('Manage Billing')}} </a></li>
-                        <li><a href="/admin/orders/shipping"> {{__('Shipping Order')}} </a></li>
                         <li><a href="/admin/orders/acception"> {{__('Manage Order')}} </a></li>
+                        <li><a href="/admin/orders/shipping"> {{__('Shipping Order')}} </a></li>
                         <li><a href="/admin/orders/finish"> {{__('Finish Order')}} </a></li>
                         {{-- <li><a href="/admin/order/add"> {{__('Add Order')}} </a></li> --}}
                     </ul>

@@ -9,35 +9,34 @@
                     <thead class="thead-primary">
                         <tr class="text-center">
                         <th>&nbsp;</th>
-                        <th>&nbsp;</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Total Purchase</th>
                         <th>Status</th>
+                        <th>View Detail</th>
                         </tr>
                     </thead>
                     <tbody>
               
-                                      
+                        @foreach ($transactions as $transaction)
                             <tr class="text-center">
+                                
                                 <td class="product-remove"><a href=""><span class="ion-ios-close"></span></a></td>
+                                                            
+                                <td class="price"> {{$transaction->date}} </td>
                                 
-                                <td class="image-prod"><div class="img" style="background-image:url(/shopresource/winkel/images/product-8.jpg);"></div></td>
-                                
-                                <td class="product-name">
-                                    <h3> asdf</h3>
-                                    <p> asdf </p>
-                                </td>
-                                
-                                <td class="price"> Rp asdf </td>
-                                
-                                <td class="quantity"> asdf </td>
-                                
-                                <td class="total"> shipped </td>
+                                <td class="quantity"> Rp <?php echo number_format($transaction->total_purchase) ?> </td>
+                                @if ($transaction->status == 'pending')
+                                    <td class="total"> Waiting For Payment </td>
+                                @elseif ($transaction->status == 'shipping')
+                                <td class="total"> Shipping </td>
+                                @endif
 
+                                <td ><a href="/order/detail/{{$transaction->id}}">View Transaction</a></td>
 
-                            </tr><!-- END TR-->
-               
+                            </tr>
+                            <!-- END TR-->
+                        @endforeach                                      
+                                           
                     </tbody>
                     </table>
                 </div>

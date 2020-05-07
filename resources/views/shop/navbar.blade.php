@@ -32,8 +32,7 @@
           <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{__('Shop')}} </a>
           <div class="dropdown-menu" aria-labelledby="dropdown04">
             <a class="dropdown-item" href="/shop"> {{__('Shop')}} </a>
-            {{-- <a class="dropdown-item" href="/cart"> {{__('Wishlist')}} </a> --}}
-            <a class="dropdown-item" href="/checkout"> {{__('Checkout')}} </a>
+            <a class="dropdown-item" href="/cart"> {{__('Wishlist')}} </a>
           </div>
 
           <li class="nav-item cta cta-colored"><a href="/cart" class="nav-link"><span class="icon-shopping_cart"></span></a></li>

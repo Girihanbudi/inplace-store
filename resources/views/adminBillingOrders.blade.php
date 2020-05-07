@@ -49,7 +49,7 @@
                                                 <th> {{__('Order ID')}} </th>
                                                 <th> {{__('Billing Name')}} </th>
                                                 <th> {{__('Date')}} </th>
-                                                <th> {{__('Total')}} </th>
+                                                <th> {{__('Total Bill')}} </th>
                                                 <th> {{__('Payment Status')}} </th>
                                                 <th> {{__('View Details')}} </th>
                                             </tr>
@@ -62,7 +62,7 @@
                                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold"> {{ $transaction->id }} </a> </td>
                                                     <td> {{$transaction->name}} </td>
                                                     <td> {{$transaction->date}} </td>
-                                                    <td> Rp <?php echo number_format($transaction->price) ?> </td>
+                                                    <td> Rp <?php echo number_format($transaction->total_purchase) ?> </td>
                                                     
                                                     @if ($transaction->status == 'canceled')
                                                         <td>
@@ -76,9 +76,9 @@
 
                                                     <td>
                                                         <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-toggle="modal" data-target="#detail-{{$transaction->id}}">
-                                                            {{__('View Details')}}
-                                                        </button>
+                                                        <a href="billing/{{$transaction->id}}" class="btn btn-success btn-sm btn-rounded">
+                                                            {{__('Manage')}}
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach
