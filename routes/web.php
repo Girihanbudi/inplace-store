@@ -34,8 +34,8 @@ Route::get('/blog', function(){
     return view('blog');
 });
 
-Route::get('/blog/id', function(){
-    return view('blogSingle');
+Route::get('/blog/viewer', function(){
+    return view('blogViewer');
 });
 
 Route::post('/cart/addproduct', 'CartController@addToCart');
@@ -49,6 +49,7 @@ Route::get('/payment', function(){
 
 Route::get('/order', 'TransactionController@unfinishTransaction');
 Route::get('/order/detail/{id}', 'TransactionController@transactionDetail');
+Route::get('/order/finish/{id}', 'TransactionController@finishTransaction');
 
 Route::get('/admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 Route::get('/admin/profile', function(){
@@ -68,6 +69,7 @@ Route::post('/admin/orders/accept', 'TransactionController@acceptOrder');
 
 Route::get('/admin/orders/accept/{id}', 'TransactionController@viewOrder');
 Route::get('/admin/orders/finish', 'TransactionController@getFinishOrder');
+Route::get('/admin/orders/finish/{id}', 'TransactionController@viewFinishTransaction');
 // Route::get('/admin/orders/add', 'TransactionController@addTransaction');
 
 Route::get('/admin/orders/shipping', 'TransactionController@getShippingOrder');

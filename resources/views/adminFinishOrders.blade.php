@@ -65,9 +65,9 @@
 
                                                     <td>
                                                         <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-toggle="modal" data-target="#detail-{{$transaction->id}}">
+                                                        <a href="finish/{{$transaction->id}}" class="btn btn-primary btn-sm btn-rounded" >
                                                             {{__('View Details')}}
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

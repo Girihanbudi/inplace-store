@@ -20,7 +20,7 @@
                     </div>
                     <h3 class="heading"><a href="#">We have an awesome update about modern clothes design</a></h3>
                     <p> So far we already make a huge changes about modern clothes design, and here today we want to deliver it to you trough fashion contest that will be held on Saturday Morning, August, 14th 2020  </p>
-                    <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">Read more</a></p>
+                    <p><a href="/blog/viewer" class="btn btn-primary py-2 px-3">Read more</a></p>
                   </div>
                 </div>
               </div>   

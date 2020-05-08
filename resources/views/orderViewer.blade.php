@@ -37,7 +37,7 @@
                     <tbody>
                         @foreach ($details as $detail)
                             <tr class="text-center">                             
-                                <td class="price"> Product image </td>
+                                <td class="image-prod"><div class="img" style="background-image:url(/shopresource/winkel/images/product-8.jpg);"></div></td>
                                 <td class="price"> {{$detail->name}} </td>                                
                                 <td class="quantity"> Rp <?php echo number_format($detail->price) ?> </td>
                                 <td class="total"> {{$detail->quantity}} </td>
@@ -87,7 +87,7 @@
                     $destination = $courier->rajaongkir->destination_details->city_id
                 ?>
                 @if ($transactions[0]->status == 'shipping')
-                    <p class="text-center"><a href="/payment/user_id={{$user_id}}&destination={{$destination}}&price={{$cost}}&total={{$total}}" class="btn btn-primary py-3 px-4">Confirm Item Received</a></p>
+                    <p class="text-center"><a href="/order/finish/{{$transactions[0]->id}}" class="btn btn-primary py-3 px-4">Confirm Item Received</a></p>
                 @elseif ($transactions[0]->status == 'pending')
                     <p class="text-center"><a href="/payment/user_id={{$user_id}}&destination={{$destination}}&price={{$cost}}&total={{$total}}" class="btn btn-primary py-3 px-4">Help For Payment</a></p>
                 @endif

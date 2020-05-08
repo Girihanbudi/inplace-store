@@ -324,4 +324,42 @@ class TransactionController extends CourierCostController
         return view('orderViewer', ['transactions'=>$transactions, 'details'=>$details, 'courier'=>$courier]);
     }
 
+    public function finishTransaction($id){
+        DB::table('transactions')
+        ->where('id', '=', $id)
+        ->update(['status'=>'finish']);
+
+        return redirect('/order');
+    }
+
+    public function viewFinishTransaction($id){
+        $transaction = DB::table('transactions')
+        ->where('id', '=', $id)    
+        ->get();
+
+        $user = DB::table('users')
+            ->where('id', '=', $transaction[0]->user_id)
+            ->get();
+
+        $details = DB::table('transaction_details')
+                ->select('products.name', 'products.price', 'transaction_details.quantity as quantity', 'transaction_details.price as total', 'products.weight', 'product_infos.color', 'product_infos.size')
+                ->leftJoin('product_infos', 'transaction_details.product_info_id', '=', 'product_infos.id')
+                ->leftJoin('products', 'product_infos.product_id', '=', 'products.id')
+                ->where('transaction_id', '=', $transaction[0]->id)
+                ->get();
+
+        $shipment = DB::table('shipments')
+                ->where('id', '=', $transaction[0]->shipment_id)
+                ->get();    
+
+        $total_weight = 0;
+        foreach ($details as $detail){
+        $total_weight += $detail->weight;
+        }
+
+        $courier = json_decode(CourierCostController::getCourierDataBuyer($total_weight * 100, $user[0]->city_id), false); 
+
+        return view ('adminFinishTransactionViewer', ['user'=>$user, 'transaction'=>$transaction, 'details'=>$details, 'courier'=>$courier, 'shipment'=>$shipment]);
+    }
+
 }
