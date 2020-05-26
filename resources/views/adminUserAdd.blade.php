@@ -49,7 +49,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="control-label"> {{_('Gender')}} </label>
+                                                <label class="control-label"> {{__('Gender')}} </label>
                                                     <option  value="1"> {{__('Male')}} </option>
                                                 <select id="gender" name="gender" class="form-control select2">
                                                     <option> {{__('Select')}} </option>
