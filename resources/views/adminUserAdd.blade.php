@@ -59,7 +59,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="control-label"> {{_('Role')}} </label>
+                                                <label class="control-label"> {{__('Role')}} </label>
                                                 <select id="role" name="role"  class="form-control select2">
                                                     <option> {{__('Select')}} </option>
                                                     <option id="role" name="role" value="0"> {{__('User/Guest')}} </option>
@@ -82,7 +82,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="control-label"> {{_('City')}} </label>
+                                                <label class="control-label"> {{__('City')}} </label>
                                                 <select id="city" name="city"  class="form-control select2">
                                                     <option> {{__('Select')}} </option>
                                                     
