@@ -57,7 +57,7 @@
                                 </td>
                                 @elseif ($transaction->status == 'finish')
                                 <td>
-                                    <span class="badge badge-pill badge-soft-secondary font-size-12"> {{__('Shipping')}} </span>
+                                    <span class="badge badge-pill badge-soft-secondary font-size-12"> {{__('Finish')}} </span>
                                 </td>
                                 @endif
 

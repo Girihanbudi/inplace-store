@@ -283,6 +283,7 @@ class TransactionController extends CourierCostController
                         ->reverse();
 
         $total_weight = 0;
+
         foreach ($transactions as $transaction){
             $total_weight += $transaction->weight;
         }

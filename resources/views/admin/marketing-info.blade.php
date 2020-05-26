@@ -4,7 +4,7 @@
             <div class="media">
                 <div class="media-body">
                     <p class="text-muted font-weight-medium"> {{__('Orders')}} </p>
-                    <h4 class="mb-0">1</h4>
+                    <h4 class="mb-0"> {{$trx_count}} </h4>
                 </div>
 
                 <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
@@ -22,7 +22,7 @@
             <div class="media">
                 <div class="media-body">
                     <p class="text-muted font-weight-medium"> {{__('Revenue')}} </p>
-                    <h4 class="mb-0">Rp 120.000</h4>
+                    <h4 class="mb-0">Rp <?php echo number_format($trx_sum)?> </h4>
                 </div>
 
                 <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -40,7 +40,7 @@
             <div class="media">
                 <div class="media-body">
                     <p class="text-muted font-weight-medium"> {{__('Average Price')}} </p>
-                    <h4 class="mb-0">Rp 120.000</h4>
+                    <h4 class="mb-0">Rp <?php echo number_format($trx_sum/$trx_count)?></h4>
                 </div>
 
                 <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">

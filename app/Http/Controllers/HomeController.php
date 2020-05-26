@@ -56,7 +56,14 @@ class HomeController extends Controller
         ->get()
         ->reverse();
 
+        $trx_count = DB::table('transactions')
+                     ->count();
+        
+        $trx_sum = DB::table('transactions')
+                    ->leftJoin('payments','transactions.payment_id', '=', 'payments.id')
+                    ->sum('payments.price');
+                    
         // send data to admin Home
-        return view('adminHome', ["transactions"=> $transactions]);
+        return view('adminHome', ["transactions"=> $transactions, 'trx_count' => $trx_count, 'trx_sum' => $trx_sum]);
     }
 }
