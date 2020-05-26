@@ -51,6 +51,14 @@
                                     <td>
                                         <span class="badge badge-pill badge-soft-warning font-size-12"> {{__('Pending')}} </span>
                                     </td>
+                                @elseif ($transaction->status == 'shipping')
+                                <td>
+                                    <span class="badge badge-pill badge-soft-primary font-size-12"> {{__('Shipping')}} </span>
+                                </td>
+                                @elseif ($transaction->status == 'finish')
+                                <td>
+                                    <span class="badge badge-pill badge-soft-secondary font-size-12"> {{__('Shipping')}} </span>
+                                </td>
                                 @endif
 
                                 <td> {{ $transaction->bank_name }} </td>
