@@ -56,8 +56,7 @@
                 </div>
         </div>
     </div>
-    @if (!empty($cart_items))
-    @if (isset($results))    
+   
         <div class="row justify-content-center">
             <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
 
@@ -95,8 +94,7 @@
                     
             </div>
         </div>
-    @endif
-    @endif
+
     </div>
 </section>
 @endsection
